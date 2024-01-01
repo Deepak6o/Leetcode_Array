@@ -1,18 +1,20 @@
-class Solution{
-public:
-    int next(int N,vector<int> &arr)
-    {
-        return next_permutation(arr.begin(),arr.end());
-    }
-    vector<int> nextPermutation(int N, vector<int> arr){
-        // code here
-        next(N,arr);
-        vector<int> ans;
-        for(auto x: arr)
-        {
-            ans.push_back(x);
+int n=nums.size();
+        int ind=-1;
+     
+        for(int i=n-2;i>=0;i--){
+            if(nums[i]<nums[i+1]){
+                ind=i;
+                break;
+            }
         }
-        return ans;
-        
+        if(ind==-1){
+            reverse(nums.begin(),nums.end());
+        }
+        for(int i=n-1;i>ind;i--){
+            if(nums[i]>nums[ind]){
+                swap(nums[i],nums[ind]);
+                break;
+            }
+        }
+        reverse(nums.begin()+ind+1,nums.end());
     }
-};
